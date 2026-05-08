@@ -1,24 +1,15 @@
-c:\Users\DARSHAN BALIGER\OneDrive\Pictures\pavi.jpeg
+
 <!DOCTYPE html>
 <html>
 <head>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--font-sans);
-  }
+  body { background: transparent; display: flex; justify-content: center; font-family: var(--font-sans); }
 
   .card {
-    width: 100%;
-    max-width: 540px;
-    margin: 0 auto;
+    width: 100%; max-width: 540px; margin: 0 auto;
     border-radius: 28px;
     background: linear-gradient(145deg, #fff8e1 0%, #ffe4f0 50%, #e8f4ff 100%);
     border: 2px solid #f9c4e0;
@@ -32,7 +23,7 @@ c:\Users\DARSHAN BALIGER\OneDrive\Pictures\pavi.jpeg
   .dot { position: absolute; border-radius: 50%; animation: fall linear infinite; }
   @keyframes fall {
     0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(700px) rotate(360deg); opacity: 0; }
+    100% { transform: translateY(800px) rotate(360deg); opacity: 0; }
   }
 
   .name-tag {
@@ -46,68 +37,73 @@ c:\Users\DARSHAN BALIGER\OneDrive\Pictures\pavi.jpeg
     animation: shine 3s linear infinite;
     margin-bottom: 0.2rem;
   }
+  @keyframes shine { 0% { background-position: 0%; } 100% { background-position: 200%; } }
 
-  @keyframes shine {
-    0% { background-position: 0%; }
-    100% { background-position: 200%; }
-  }
-
-  .subtitle {
-    font-size: 1rem;
-    color: #c2507a;
-    font-weight: 500;
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.08em;
-  }
+  .subtitle { font-size: 1rem; color: #c2507a; font-weight: 500; margin-bottom: 0.8rem; letter-spacing: 0.08em; }
 
   .emojis {
-    font-size: 2rem;
-    letter-spacing: 6px;
-    display: block;
-    margin: 0.5rem 0;
+    font-size: 2rem; letter-spacing: 6px; display: block; margin: 0.5rem 0;
     animation: wiggle 1.5s ease-in-out infinite alternate;
   }
-
   @keyframes wiggle {
     from { transform: rotate(-4deg) scale(1); }
     to { transform: rotate(4deg) scale(1.08); }
   }
 
-  .divider {
-    display: flex; align-items: center; gap: 10px;
-    margin: 0.8rem auto; max-width: 340px;
-  }
+  .divider { display: flex; align-items: center; gap: 10px; margin: 0.8rem auto; max-width: 340px; }
   .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #f9c4e0, transparent); }
 
   .photo-frame {
     margin: 1rem auto 1.2rem;
-    width: 200px;
-    height: 220px;
+    width: 200px; height: 220px;
     border-radius: 20px;
     border: 4px solid #f9c4e0;
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(240,98,146,0.18);
-    position: relative;
+  }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+  /* Floating music indicator */
+  .music-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0.6rem auto;
+    font-size: 0.85rem;
+    color: #c2507a;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
   }
 
-  .photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
+  .bars {
+    display: flex; align-items: flex-end; gap: 2px; height: 18px;
   }
+  .bar {
+    width: 3px; background: #f06292; border-radius: 2px;
+    animation: bar-dance 0.8s ease-in-out infinite alternate;
+  }
+  .bar:nth-child(1) { animation-delay: 0s; }
+  .bar:nth-child(2) { animation-delay: 0.15s; }
+  .bar:nth-child(3) { animation-delay: 0.3s; }
+  .bar:nth-child(4) { animation-delay: 0.45s; }
+  .bar:nth-child(5) { animation-delay: 0.6s; }
+  @keyframes bar-dance { from { height: 3px; } to { height: 16px; } }
+  .bars.paused .bar { animation-play-state: paused; height: 6px; }
 
-  .photo-decoration {
-    position: absolute;
-    top: -12px; right: -12px;
-    font-size: 1.6rem;
-    animation: spin 4s linear infinite;
+  .mute-btn {
+    background: rgba(255,255,255,0.8);
+    border: 1.5px solid #f9c4e0;
+    border-radius: 50px;
+    padding: 3px 12px;
+    font-size: 0.78rem;
+    color: #c2507a;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.2s;
   }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
+  .mute-btn:hover { background: #f9c4e0; }
 
   .message-box {
     background: rgba(255,255,255,0.65);
@@ -120,49 +116,50 @@ c:\Users\DARSHAN BALIGER\OneDrive\Pictures\pavi.jpeg
     color: #444;
     line-height: 1.9;
   }
+  .message-box .highlight { color: #e91e8c; font-weight: 500; }
 
-  .message-box .highlight {
-    color: #e91e8c;
-    font-weight: 500;
-  }
-
-  .fun-facts {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 1rem 0;
-  }
-
+  .fun-facts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 1rem 0; }
   .badge {
-    background: white;
-    border: 1.5px solid #f9c4e0;
-    border-radius: 50px;
-    padding: 6px 16px;
-    font-size: 0.85rem;
-    color: #c2507a;
-    font-weight: 500;
+    background: white; border: 1.5px solid #f9c4e0;
+    border-radius: 50px; padding: 6px 16px;
+    font-size: 0.85rem; color: #c2507a; font-weight: 500;
   }
 
-  .footer {
-    margin-top: 1.2rem;
-    font-size: 1.5rem;
-    letter-spacing: 8px;
-    animation: heartbeat 1.2s ease-in-out infinite;
-  }
+  .footer { margin-top: 1.2rem; font-size: 1.5rem; letter-spacing: 8px; animation: heartbeat 1.2s ease-in-out infinite; }
+  @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
+  /* Tap to start overlay */
+  .tap-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,240,248,0.7);
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    z-index: 10;
+    backdrop-filter: blur(2px);
   }
+  .tap-overlay .tap-icon { font-size: 3rem; animation: pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+  .tap-overlay p { font-size: 1.1rem; color: #c2507a; font-weight: 500; }
 </style>
 </head>
 <body>
-<div class="card">
+<div class="card" id="card">
+
+  <!-- Tap to start overlay (browsers block autoplay) -->
+  <div class="tap-overlay" id="tapOverlay" onclick="startCard()">
+    <span class="tap-icon">🎵</span>
+    <p>Tap to open Pavitra's card!</p>
+  </div>
+
   <div class="confetti" id="confetti"></div>
 
   <span class="emojis">🎉🥳🎊</span>
-
   <div class="name-tag">Hey Pavitra!</div>
   <div class="subtitle">🎂 It's YOUR day, queen! 🎂</div>
 
@@ -172,7 +169,7 @@ c:\Users\DARSHAN BALIGER\OneDrive\Pictures\pavi.jpeg
     <div class="divider-line"></div>
   </div>
 
-  <!-- Photo Section -->
+  <!-- Photo -->
   <div style="position: relative; display: inline-block;">
     <div class="photo-frame">
       <img src="pavi.jpeg" alt="Pavitra" />
@@ -180,6 +177,21 @@ c:\Users\DARSHAN BALIGER\OneDrive\Pictures\pavi.jpeg
     <span style="position:absolute; top:-10px; right:-10px; font-size:1.8rem;">👑</span>
     <span style="position:absolute; bottom:-10px; left:-10px; font-size:1.5rem;">🌸</span>
   </div>
+
+  <!-- Subtle music indicator -->
+  <div class="music-indicator">
+    <div class="bars paused" id="bars">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <span id="musicLabel">🎵 Playing birthday song</span>
+    <button class="mute-btn" id="muteBtn" onclick="toggleMute()">🔇 Mute</button>
+  </div>
+
+  <audio id="audio" src="/mnt/user-data/uploads/1778221623872_WhatsApp_Audio_2026-05-08_at_11_56_13_AM.mpeg" loop></audio>
 
   <div class="message-box">
     Okay Pavitra, let's be real — <span class="highlight">you are literally the coolest person</span> I know! 😎<br><br>
@@ -196,21 +208,35 @@ c:\Users\DARSHAN BALIGER\OneDrive\Pictures\pavi.jpeg
 </div>
 
 <script>
+  const audio = document.getElementById('audio');
+  const bars = document.getElementById('bars');
+  const muteBtn = document.getElementById('muteBtn');
+  const musicLabel = document.getElementById('musicLabel');
+  let muted = false;
+
+  function startCard() {
+    document.getElementById('tapOverlay').style.display = 'none';
+    audio.play().then(() => {
+      bars.classList.remove('paused');
+    }).catch(() => {});
+  }
+
+  function toggleMute() {
+    muted = !muted;
+    audio.muted = muted;
+    muteBtn.textContent = muted ? '🔊 Unmute' : '🔇 Mute';
+    musicLabel.textContent = muted ? '🎵 Song paused' : '🎵 Playing birthday song';
+    bars.classList.toggle('paused', muted);
+  }
+
+  // confetti
   const confetti = document.getElementById('confetti');
   const colors = ['#f9c4e0','#ffd6a5','#b5d4f4','#c8f7c5','#e8d5ff'];
   for(let i = 0; i < 35; i++) {
     const dot = document.createElement('div');
     dot.className = 'dot';
     const size = Math.random() * 9 + 4;
-    dot.style.cssText = `
-      width:${size}px; height:${size}px;
-      background:${colors[Math.floor(Math.random()*colors.length)]};
-      left:${Math.random()*100}%;
-      top:${Math.random()*100}%;
-      animation-duration:${Math.random()*4+3}s;
-      animation-delay:${Math.random()*5}s;
-      opacity:${Math.random()*0.6+0.3};
-    `;
+    dot.style.cssText = `width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${Math.random()*4+3}s;animation-delay:${Math.random()*5}s;opacity:${Math.random()*0.6+0.3};`;
     confetti.appendChild(dot);
   }
 </script>
