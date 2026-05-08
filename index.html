@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-sans);
+  }
+
+  .card {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #fff8e1 0%, #ffe4f0 50%, #e8f4ff 100%);
+    border: 2px solid #f9c4e0;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .confetti { position: absolute; top: 0; left: 0; right: 0; height: 100%; pointer-events: none; }
+  .dot { position: absolute; border-radius: 50%; animation: fall linear infinite; }
+  @keyframes fall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(600px) rotate(360deg); opacity: 0; }
+  }
+
+  .name-tag {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8rem;
+    background: linear-gradient(90deg, #f06292, #ffb300, #42a5f5, #66bb6a, #f06292);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+    margin-bottom: 0.2rem;
+  }
+
+  @keyframes shine {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: #c2507a;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    letter-spacing: 0.08em;
+  }
+
+  .emojis {
+    font-size: 2rem;
+    letter-spacing: 6px;
+    display: block;
+    margin: 0.5rem 0;
+    animation: wiggle 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes wiggle {
+    from { transform: rotate(-4deg) scale(1); }
+    to { transform: rotate(4deg) scale(1.08); }
+  }
+
+  .divider {
+    display: flex; align-items: center; gap: 10px;
+    margin: 1rem auto; max-width: 340px;
+  }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #f9c4e0, transparent); }
+
+  .message-box {
+    background: rgba(255,255,255,0.65);
+    border-radius: 16px;
+    border: 1px solid #f9c4e0;
+    padding: 1.2rem 1.4rem;
+    margin: 1rem auto;
+    max-width: 420px;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.9;
+  }
+
+  .message-box .highlight {
+    color: #e91e8c;
+    font-weight: 500;
+  }
+
+  .fun-facts {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
+
+  .badge {
+    background: white;
+    border: 1.5px solid #f9c4e0;
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    color: #c2507a;
+    font-weight: 500;
+  }
+
+  .footer {
+    margin-top: 1.2rem;
+    font-size: 1.5rem;
+    letter-spacing: 8px;
+    animation: heartbeat 1.2s ease-in-out infinite;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="confetti" id="confetti"></div>
+
+  <span class="emojis">🎉🥳🎊</span>
+
+  <div class="name-tag">Hey Pavitra!</div>
+  <div class="subtitle">🎂 It's YOUR day, queen! 🎂</div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span style="font-size:1.1rem;">🌈</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="message-box">
+    Okay Pavitra, let's be real — <span class="highlight">you are literally the coolest person</span> I know! 😎<br><br>
+    You bring so much drama 🎭, laughter 😂 and chaos 🌀 into my life — and honestly? <span class="highlight">I wouldn't have it any other way.</span><br><br>
+    Today is YOUR day to eat all the cake 🎂, dance like nobody's watching 💃, and let everyone pamper you like the <span class="highlight">absolute legend</span> you are! 👑<br><br>
+    Happy Birthday, Pavitra! May your day be as <span class="highlight">extra</span> as you are! 🌟
+  </div>
+
+  <div class="fun-facts">
+    <span class="badge">🎈 Party mode: ON</span>
+    <span class="badge">🍰 Cake: mandatory</span>
+    <span class="badge">👑 Queen energy: max</span>
+  </div>
+
+  <div class="footer">💖 💛 💙</div>
+</div>
+
+<script>
+  const confetti = document.getElementById('confetti');
+  const colors = ['#f9c4e0','#ffd6a5','#b5d4f4','#c8f7c5','#e8d5ff'];
+  for(let i = 0; i < 35; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    const size = Math.random() * 9 + 4;
+    dot.style.cssText = `
+      width:${size}px; height:${size}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      animation-duration:${Math.random()*4+3}s;
+      animation-delay:${Math.random()*5}s;
+      opacity:${Math.random()*0.6+0.3};
+    `;
+    confetti.appendChild(dot);
+  }
+</script>
+</body>
+</html>
